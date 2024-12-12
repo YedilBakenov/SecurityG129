@@ -1,11 +1,8 @@
 package com.example.SecurityG129.config;
 
 
-import com.example.SecurityG129.model.User;
 import com.example.SecurityG129.service.UserService;
 import lombok.RequiredArgsConstructor;
-import lombok.val;
-import org.hibernate.mapping.Array;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -58,9 +55,9 @@ public class SecurityConfig {
                             .passwordParameter("password")
                             .loginPage("/sign-in")
                             .defaultSuccessUrl("/", true)
-                            .failureForwardUrl("/sign-in?error"));
+                            .failureUrl("/sign-in?error"));
 
-            httpSecurity.logout(lg -> lg.logoutSuccessUrl("/log-out").logoutSuccessUrl("/sign-in"));
+            httpSecurity.logout(lg -> lg.logoutUrl("/log-out").logoutSuccessUrl("/sign-in"));
 
             return httpSecurity.build();
 

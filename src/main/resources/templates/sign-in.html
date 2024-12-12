@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Please sign in</title>
+</head>
+<body>
+<div class="content">
+    <form  method="post" th:action="@{'/auth'}">
+        <h2>Please sign in</h2>
+
+        <p>
+            <label>Email</label>
+            <input type="email" name="email" placeholder="Email" required>
+        </p>
+        <label>Password</label>
+        <p>
+            <input type="password" name="password" placeholder="Password" required>
+        </p>
+
+        <button>Sign in</button>
+    </form>
+
+    <a th:href="@{'/registration'}">Sign up</a>
+
+</div>
+</body>
+</html>

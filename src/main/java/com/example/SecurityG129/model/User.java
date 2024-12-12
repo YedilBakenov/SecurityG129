@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -16,6 +17,7 @@ import java.util.List;
 @NoArgsConstructor
 @Table(name = "users")
 @Entity
+@ToString
 public class User implements UserDetails {
 
     @Id
@@ -28,10 +30,8 @@ public class User implements UserDetails {
 
     private String fullName;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<Permission>permissions;
-
-
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
