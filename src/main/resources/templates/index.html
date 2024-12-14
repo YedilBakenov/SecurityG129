@@ -1,14 +1,79 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <div th:insert="links.html"></div>
 </head>
 <body>
     <h1>HELLO!</h1>
 
-    <form action="/log-out" method="post">
-        <button>LOG OUT</button>
+    <form th:action="@{'/change-profile'}"method="post">
+        <div class="row">
+            <div class="col-4">
+                <div class="col-8">
+                    <div class="row mt-2">
+                        <div class="col-12">
+                            <label>CHANGE FULL NAME:</label>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-12">
+                            <input type="text" name="fullName" placeholder="FULL NAME" >
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-12">
+                            <label>CHANGE EMAIL:</label>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-12">
+                            <input type="email" name="email" placeholder="Email" th:value="${#authentication.getName()}">
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-12">
+                            <label>OLD PASSWORD:</label>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-12">
+                            <input type="password" name="oldPassword" placeholder="Password" >
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-12">
+                            <label>NEW PASSWORD:</label>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-12">
+                            <input type="password" name="newPassword" placeholder="Password" >
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-12">
+                            <label>RE NEW PASSWORD:</label>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-12">
+                            <input type="password" name="reNewPassword" placeholder="Password" >
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-12">
+                            <button class="btn btn-success btn-sm" type="submit">CHANGE PROFILE</button>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </form>
+
+
+    <form th:action="@{'/log-out'}" method="post">
+        <button class="btn btn-danger btn-sm">LOG OUT</button>
     </form>
 </body>
 </html>

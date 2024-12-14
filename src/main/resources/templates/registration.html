@@ -1,36 +1,67 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>Please sign in</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <div th:insert="links.html"></div>
 </head>
 <body>
-<div class="content">
-    <form method="post" th:action="@{'/registration'}">
-        <h2>Please sign up</h2>
-        <p>
-            <label>FULL NAME</label>
-            <input type="text" name="fullName" placeholder="Full name" required>
-        </p>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <form method="post" th:action="@{'/registration'}">
+                <div class="row justify-content-center">
+                    <div class="col-4">
+                        <div class="row mt-2">
+                            <div class="col-12">
+                                <label>FULL NAME:</label>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-12">
+                                <input type="text" name="fullName" placeholder="FULL NAME" required>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-12">
+                                <label>EMAIL:</label>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-12">
+                                <input type="email" name="email" placeholder="Email" required>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-12">
+                                <label>PASSWORD:</label>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-12">
+                                <input type="password" name="password" placeholder="Password" required>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-12">
+                                <label>RE PASSWORD:</label>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-12">
+                                <input type="password" name="rePassword" placeholder="Password" required>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-12">
+                                <button class="btn btn-success btn-sm" type="submit">SIGN UP</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
 
-        <p>
-            <label>Email</label>
-            <input type="email" name="email" placeholder="Email" required>
-        </p>
-        <label>Password</label>
-        <p>
-            <input type="password" name="password" placeholder="Password" required>
-        </p>
-        <label>RE Password</label>
-        <p>
-            <input type="password" name="rePassword" placeholder="Password" required>
-        </p>
-        <button>Sign up</button>
-
-    </form>
 
 </div>
 </body>

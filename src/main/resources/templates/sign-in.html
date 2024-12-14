@@ -1,30 +1,52 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>Please sign in</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <div th:insert="links.html"></div>
 </head>
 <body>
-<div class="content">
-    <form  method="post" th:action="@{'/auth'}">
-        <h2>Please sign in</h2>
-
-        <p>
-            <label>Email</label>
-            <input type="email" name="email" placeholder="Email" required>
-        </p>
-        <label>Password</label>
-        <p>
-            <input type="password" name="password" placeholder="Password" required>
-        </p>
-
-        <button>Sign in</button>
-    </form>
-
-    <a th:href="@{'/registration'}">Sign up</a>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <form method="post" th:action="@{'/auth'}">
+                <div class="row justify-content-center">
+                    <div class="col-4">
+                        <div class="row mt-2">
+                            <div class="col-12">
+                                <label>Email:</label>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-12">
+                                <input type="email" name="email" placeholder="Email" required>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-12">
+                                <label>Password:</label>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-12">
+                                <input type="password" name="password" placeholder="Password" required>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-12">
+                                <button class="btn btn-success btn-sm" type="submit">SIGN IN</button>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-12">
+                                <a class="btn btn-primary btn-sm" th:href="@{'/registration'}">SIGN UP</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 
 </div>
 </body>

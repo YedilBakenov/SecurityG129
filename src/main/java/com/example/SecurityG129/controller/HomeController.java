@@ -18,39 +18,51 @@ public class HomeController {
 
     @PreAuthorize("isAuthenticated()")
     @GetMapping(value = "/")
-    public  String getHomePage(){
+    public String getHomePage() {
         return "index";
     }
+
     @PreAuthorize("isAnonymous()")
     @GetMapping(value = "/sign-in")
-    public String getLogin(){
+    public String getLogin() {
         return "sign-in";
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping(value = "/admin")
-    public String adminPage(){
+    public String adminPage() {
         return "admin";
     }
 
     @GetMapping(value = "/forbidden")
-    public String denied(){
+    public String denied() {
         return "forbidden";
     }
 
     @PreAuthorize("isAnonymous()")
     @GetMapping(value = "/registration")
-    public String getRegistrPage(){
+    public String getRegistrPage() {
         return "registration";
     }
 
     @PostMapping(value = "/registration")
-    public String getRegistr(User user, @RequestParam String rePassword){
+    public String getRegistr(User user, @RequestParam String rePassword) {
         System.out.println(user);
         System.out.println(rePassword);
 
         userService.addUser(user, rePassword);
         return "redirect:/sign-in";
+    }
+
+    @PostMapping(value = "/change-profile")
+    public String changeProfile(@RequestParam String fullName,
+                                @RequestParam String email,
+                                @RequestParam String oldPassword,
+                                @RequestParam String newPassword,
+                                @RequestParam String reNewPassword) {
+
+        userService.changeUser(fullName, email, oldPassword, newPassword, reNewPassword);
+        return "redirect:/";
     }
 
 

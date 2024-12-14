@@ -5,6 +5,8 @@ import com.example.SecurityG129.model.User;
 import com.example.SecurityG129.repository.PermissionRepository;
 import com.example.SecurityG129.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -43,4 +45,40 @@ public class UserService {
 
     }
 
+    public User getCurrentUser(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        return (User)authentication.getPrincipal();
+    }
+
+    public void changeUser(String fullName, String email,  String oldPassword, String newPassword, String reNewPassword) {
+
+        if(fullName!=null){
+            getCurrentUser().setFullName(fullName);
+        }
+
+        User user = userRepository.getUserByEmail(email);
+
+        if(user!=null){
+            return;
+        }
+
+        if(email!=null){
+            getCurrentUser().setEmail(email);
+        }
+
+        if(!encoder.matches(oldPassword, getCurrentUser().getPassword())){
+            return;
+        }
+
+
+
+        if(!newPassword.equals(reNewPassword)){
+            return;
+        }
+
+        getCurrentUser().setPassword(encoder.encode(newPassword));
+
+        userRepository.save(getCurrentUser());
+
+    }
 }
